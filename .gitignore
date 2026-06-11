@@ -1,4 +1,6 @@
 openspec/
 OPENSPEC.md
 .claude
-
+.agents/
+demo/node_modules/
+demo/dist/
