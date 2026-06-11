@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="cyanGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#22D3EE"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="120" fill="url(#bg)"/>
+
+  <!-- Subtle grid texture -->
+  <pattern id="dotGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="0.8" fill="#334155" opacity="0.3"/>
+  </pattern>
+  <rect x="96" y="96" width="320" height="320" rx="24" fill="url(#dotGrid)"/>
+
+  <!-- Flowing path: Chaos → Order -->
+  <path d="M 140 160 Q 200 160 240 240 Q 280 320 340 320" fill="none" stroke="#1E293B" stroke-width="2" stroke-dasharray="6 6" opacity="0.6"/>
+
+  <!-- CHAOS ZONE: Scattered pixels (top-left) -->
+  <!-- Intentionally irregular positions, smaller sizes, muted tones -->
+  <rect x="118" y="132" width="18" height="18" rx="3" fill="#334155" opacity="0.7"/>
+  <rect x="152" y="118" width="14" height="14" rx="2" fill="#475569" opacity="0.6"/>
+  <rect x="108" y="168" width="16" height="16" rx="2.5" fill="#334155" opacity="0.5"/>
+  <rect x="188" y="142" width="20" height="20" rx="3" fill="#475569" opacity="0.7"/>
+  <rect x="138" y="196" width="15" height="15" rx="2" fill="#334155" opacity="0.55"/>
+  <rect x="212" y="178" width="17" height="17" rx="2.5" fill="#475569" opacity="0.65"/>
+
+  <!-- TRANSITION ZONE: Half-formed pixels (center) -->
+  <!-- Partially aligned, medium brightness -->
+  <rect x="178" y="228" width="22" height="22" rx="4" fill="#64748B" opacity="0.7"/>
+  <rect x="218" y="208" width="24" height="24" rx="4" fill="#0E7490" opacity="0.6"/>
+  <rect x="198" y="268" width="20" height="20" rx="3.5" fill="#64748B" opacity="0.65"/>
+  <rect x="252" y="242" width="26" height="26" rx="4.5" fill="#0E7490" opacity="0.7"/>
+  <rect x="232" y="292" width="22" height="22" rx="4" fill="#64748B" opacity="0.6"/>
+
+  <!-- ORDER ZONE: Perfect 3×3 grid (bottom-right) -->
+  <!-- Crisp alignment, larger, glowing cyan -->
+  <g filter="url(#glow)">
+    <!-- Row 1 -->
+    <rect x="282" y="282" width="30" height="30" rx="6" fill="url(#cyanGlow)"/>
+    <rect x="320" y="282" width="30" height="30" rx="6" fill="url(#cyanGlow)"/>
+    <rect x="358" y="282" width="30" height="30" rx="6" fill="url(#cyanGlow)"/>
+    <!-- Row 2 -->
+    <rect x="282" y="320" width="30" height="30" rx="6" fill="url(#cyanGlow)"/>
+    <rect x="320" y="320" width="30" height="30" rx="6" fill="url(#cyanGlow)"/>
+    <rect x="358" y="320" width="30" height="30" rx="6" fill="url(#cyanGlow)"/>
+    <!-- Row 3 -->
+    <rect x="282" y="358" width="30" height="30" rx="6" fill="url(#cyanGlow)"/>
+    <rect x="320" y="358" width="30" height="30" rx="6" fill="url(#cyanGlow)"/>
+    <rect x="358" y="358" width="30" height="30" rx="6" fill="url(#cyanGlow)"/>
+  </g>
+
+  <!-- Inner core: the "conversion focal point" -->
+  <circle cx="320" cy="320" r="8" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="320" cy="320" r="4" fill="#0F172A"/>
+
+  <!-- Corner accents: framing the transformation -->
+  <path d="M 64 380 L 64 416 Q 64 448 96 448 L 132 448" fill="none" stroke="#06B6D4" stroke-width="2.5" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 448 132 L 448 96 Q 448 64 416 64 L 380 64" fill="none" stroke="#06B6D4" stroke-width="2.5" opacity="0.4" stroke-linecap="round"/>
+
+  <!-- Micro label: L + P embedded in negative space (subtle) -->
+  <text x="134" y="430" font-family="-apple-system, SF Pro Display, Helvetica Neue, sans-serif" font-size="11" font-weight="700" fill="#475569" opacity="0.35" letter-spacing="2">LP</text>
+</svg>
