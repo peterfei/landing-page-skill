@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/banner.svg" alt="Landing Page Skill Banner" width="100%">
+  <img src="assets/lp-animation.gif" alt="Landing Page Skill 工作流程动画" width="100%">
   <br><br>
   <img src="assets/logo.svg" alt="Landing Page Skill Logo" width="120">
   <h1>Landing Page Skill</h1>
@@ -15,6 +15,7 @@
     <img src="https://img.shields.io/badge/License-MIT-green.svg?color=0f172a&labelColor=1e293b" alt="License: MIT">
   </p>
 </div>
+
 
 ---
 
@@ -131,6 +132,7 @@ python scripts/quality_check.py
 <div align="center">
   <img src="demo-screenshot.jpg" alt="Landing Page Demo" width="100%">
 </div>
+
 
 ## 许可证
 
