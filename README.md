@@ -8,6 +8,7 @@
     <strong>简体中文</strong> · <a href="README.en.md">English</a>
   </p>
   <p>
+    <img src="https://img.shields.io/badge/Agent--Agnostic-50%2B%20Runtimes-22d3ee?color=0f172a&labelColor=1e293b" alt="Agent-Agnostic">
     <img src="https://img.shields.io/badge/Claude%20Code-Skill-blue?logo=claude&color=0f172a&labelColor=1e293b" alt="Claude Code Skill">
     <img src="https://img.shields.io/badge/Next.js-14%2F15-black?logo=next.js&color=0f172a&labelColor=1e293b" alt="Next.js">
     <img src="https://img.shields.io/badge/Tailwind-CSS-06b6d4?logo=tailwindcss&color=0f172a&labelColor=1e293b" alt="Tailwind CSS">
@@ -19,7 +20,7 @@
 
 ## 简介
 
-Landing Page Skill 是一个面向 Claude Code 的 Agent Skill，实现**文案策略 + 视觉设计 + 代码实现**三位一体的全链路落地页生成能力。
+Landing Page Skill 是一个 **agent-agnostic** 的 Agent Skill，实现**文案策略 + 视觉设计 + 代码实现**三位一体的全链路落地页生成能力。兼容 Claude Code、Codex CLI、Cursor、Gemini CLI 等 50+ 运行时。
 
 市场上已有的竞品（bear2u、rampstackco、anthropics/frontend-design）各自只覆盖单一环节，存在技术栈锁定、语言单一、无质量检测等明显缺陷。本 Skill 通过融合 **DESIGNNAS 11 元素转化框架**、**7 段式文案架构**、**6 种美学风格模板** 和 **5 项反模式主动检测**，填补了这一空白。
 
@@ -35,6 +36,7 @@ Landing Page Skill 是一个面向 Claude Code 的 Agent Skill，实现**文案�
 | **技术栈适配器** | Next.js 14/15 + Tailwind CSS（App Router） |
 | **行业模板** | SaaS 产品页、电商产品页 |
 | **文案公式库** | Hero 标题公式、CTA 模式库、异议处理策略 |
+| **跨运行时兼容** | 兼容 Claude Code、Codex CLI、Cursor、Trae 等 50+ 运行时 |
 
 ## 项目结构
 
@@ -44,6 +46,7 @@ landing-page-skill/
 ├── LICENSE                           # MIT 许可证
 ├── README.md                         # 本文件
 ├── README.en.md                      # 英文版
+├── skills-lock.json                  # Skill 注册锁文件
 ├── assets/
 │   ├── logo.svg                      # 品牌 Logo
 │   └── banner.svg                    # README 横幅
@@ -52,6 +55,7 @@ landing-page-skill/
 │   ├── design-system.md              # 设计系统：Typography/Color/Motion/Layout Token
 │   ├── aesthetic-styles.md           # 美学风格：6 种风格模板
 │   ├── anti-patterns.md              # 反模式检测器：5 项规则
+│   ├── runtime-compatibility.md      # 跨运行时适配文档
 │   ├── tech-adapters/
 │   │   └── nextjs-tailwind.md        # Next.js + Tailwind 适配器
 │   ├── copy-formulas/
@@ -66,9 +70,16 @@ landing-page-skill/
     └── preview.sh                    # 本地预览脚本
 ```
 
+## 快速开始
+
+```bash
+# 安装（需要 Agent Skills 运行时，如 Claude Code）
+npx skills add peterfei/landing-page-skill
+```
+
 ## 使用方法
 
-在 Claude Code 中，当用户提到以下触发词时 Skill 自动激活：
+当用户提到以下触发词时 Skill 自动激活：
 
 > landing page、落地页、产品页、营销页、主页设计、single page website、着陆页
 
@@ -91,6 +102,21 @@ python scripts/quality_check.py
 - SKILL.md 行数 ≤ 400
 - Frontmatter 格式正确
 - 5 项反模式规则完整
+
+## 跨运行时兼容
+
+本 Skill 设计为 **agent-agnostic**，兼容以下运行时：
+
+| 运行时 | 支持方式 |
+|--------|---------|
+| Claude Code | 原生支持，推荐 |
+| Codex CLI | 兼容，直接加载 |
+| Cursor | 兼容，`.cursorrules` 或 Composer |
+| Trae | 兼容，直接加载 |
+| OpenClaw | 兼容，skills.sh 协议 |
+| 其他 markdown-based skill 运行时 | 兼容 |
+
+详见 `references/runtime-compatibility.md`。
 
 ## 适用场景
 

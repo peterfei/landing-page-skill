@@ -4,20 +4,12 @@ description: >
   全链路落地页生成 Agent Skill。触发词：landing page、落地页、产品页、营销页、主页设计。
   5 阶段协议：需求采集 → 策略规划 → 设计系统 → 代码生成 → 质量验证。
   适用：单页转化型落地页（SaaS/电商/服务）。不适用：多页网站、后端集成、复杂交互应用。
-references:
-  - references/conversion-framework.md
-  - references/design-system.md
-  - references/aesthetic-styles.md
-  - references/tech-adapters/nextjs-tailwind.md
-  - references/anti-patterns.md
-  - references/copy-formulas/hero-headlines.md
-  - references/copy-formulas/cta-patterns.md
-  - references/copy-formulas/objection-handling.md
-  - references/page-templates/saas-product.md
-  - references/page-templates/ecommerce.md
 ---
 
 # Landing Page Skill
+
+> 本 Skill 设计为 **agent-agnostic**——Claude Code、Codex CLI、Cursor、Trae、OpenClaw、Hermes Agent 或任何支持 markdown-based skill 的 agent 都可以使用。
+> 所有文件引用采用**相对本 Skill 根目录**的相对路径形式。
 
 ## 激活条件
 
@@ -49,29 +41,29 @@ references:
 2. **目标受众**：谁会用？有什么痛点？
 3. **转化目标**：希望用户做什么？（注册/购买/下载/预约）
 4. **技术栈**：确认使用 Next.js 14/15 + Tailwind CSS
-5. **品牌风格偏好**：从 references/aesthetic-styles.md 的 6 种风格中选择
+5. **品牌风格偏好**：从 `references/aesthetic-styles.md` 的 6 种风格中选择
 6. **竞品参考**：有喜欢的落地页参考吗？（可选）
 
 **输出**：需求摘要文档（Markdown 列表），用于 Phase 2。
 
 ### Phase 2: 策略规划
 
-1. **加载行业模板**：根据产品类型从 references/page-templates/ 选择模板：
-   - SaaS 产品 → saas-product.md
-   - 电商单品 → ecommerce.md
+1. **加载行业模板**：根据产品类型从 `references/page-templates/` 选择模板：
+   - SaaS 产品 → `references/page-templates/saas-product.md`
+   - 电商单品 → `references/page-templates/ecommerce.md`
    - 其他 → 通用结构（Hero → Features → Benefits → Social Proof → CTA → Footer）
-2. **选择美学方向**：从 references/aesthetic-styles.md 选择风格，确认配色倾向
-3. **文案结构**：使用 references/copy-formulas/ 规划：
-   - Hero 标题：hero-headlines.md 的 "结果 + 受众 + 机制" 公式
-   - CTA 文案：cta-patterns.md 的 "动词 + 利益" 格式
-   - 异议处理：objection-handling.md 的 5 类异议模板
-4. **转化框架映射**：将 7 段式文案映射到 DESIGNNAS 11 元素
+2. **选择美学方向**：从 `references/aesthetic-styles.md` 选择风格，确认配色倾向
+3. **文案结构**：使用 `references/copy-formulas/` 规划：
+   - Hero 标题：`references/copy-formulas/hero-headlines.md` 的 "结果 + 受众 + 机制" 公式
+   - CTA 文案：`references/copy-formulas/cta-patterns.md` 的 "动词 + 利益" 格式
+   - 异议处理：`references/copy-formulas/objection-handling.md` 的 5 类异议模板
+4. **转化框架映射**：将 7 段式文案映射到 DESIGNNAS 11 元素（参考 `references/conversion-framework.md`）
 
 **输出**：策略文档（含风格选择、配色方向、文案大纲、元素映射表）。
 
 ### Phase 3: 设计系统
 
-基于 references/design-system.md 生成设计 Token：
+基于 `references/design-system.md` 生成设计 Token：
 
 1. **Typography Token**：Display 字体、Body 字体、heading 字号阶梯
 2. **Color Token**：Primary / Secondary / Accent / Neutral / Background / Text（hex + CSS 变量）
@@ -82,7 +74,7 @@ references:
 
 ### Phase 4: 代码生成
 
-按 references/tech-adapters/nextjs-tailwind.md 生成代码：
+按 `references/tech-adapters/nextjs-tailwind.md` 生成代码：
 
 1. **项目结构**：app/page.tsx、app/layout.tsx、components/、lib/utils.ts、tailwind.config.ts
 2. **组件化**：每个 DESIGNNAS 元素独立组件（HeroSection、FeaturesSection 等）
@@ -105,30 +97,59 @@ references:
 
 | # | 规则 | 检测逻辑 | 严重度 | 修复建议 |
 |---|------|---------|--------|---------|
-| 1 | 泛滥字体 | 检测到 Inter/Roboto/Arial 作为 Display 字体 | 中 | 替换为风格匹配的 Display 字体（见 aesthetic-styles.md） |
-| 2 | 模板化配色 | 检测到紫色渐变(#7c3aed→#a855f7)+纯白背景 | 高 | 使用 design-system.md 配色 Token 重新生成 |
-| 3 | CTA 模糊 | CTA 文本为 Submit / Learn More / Click Here | 高 | 替换为 cta-patterns.md 中的 "动词+利益" 格式 |
+| 1 | 泛滥字体 | 检测到 Inter/Roboto/Arial 作为 Display 字体 | 中 | 替换为风格匹配的 Display 字体（见 `references/aesthetic-styles.md`） |
+| 2 | 模板化配色 | 检测到紫色渐变(#7c3aed→#a855f7)+纯白背景 | 高 | 使用 `references/design-system.md` 配色 Token 重新生成 |
+| 3 | CTA 模糊 | CTA 文本为 Submit / Learn More / Click Here | 高 | 替换为 `references/copy-formulas/cta-patterns.md` 中的 "动词+利益" 格式 |
 | 4 | 缺少社会证明 | Hero 下方无 Social Proof 元素 | 中 | 在 Hero 后添加客户 Logo/评分/用户数量 |
-| 5 | Hero 标题无力 | 标题以 Welcome / 品牌名开头，或纯描述性语句 | 高 | 使用 hero-headlines.md 公式重写 |
+| 5 | Hero 标题无力 | 标题以 Welcome / 品牌名开头，或纯描述性语句 | 高 | 使用 `references/copy-formulas/hero-headlines.md` 公式重写 |
 
 **输出**：检测报告（Markdown 表格），高严重度问题必须修复后重新输出代码。
 
 ## 索引
 
 ### 技术栈适配器
-- Next.js 14/15 + Tailwind CSS → references/tech-adapters/nextjs-tailwind.md
+- Next.js 14/15 + Tailwind CSS → `references/tech-adapters/nextjs-tailwind.md`
 
 ### 行业模板
-- SaaS 产品页 → references/page-templates/saas-product.md
-- 电商产品页 → references/page-templates/ecommerce.md
+- SaaS 产品页 → `references/page-templates/saas-product.md`
+- 电商产品页 → `references/page-templates/ecommerce.md`
 
 ### 文案公式库
-- Hero 标题 → references/copy-formulas/hero-headlines.md
-- CTA 模式 → references/copy-formulas/cta-patterns.md
-- 异议处理 → references/copy-formulas/objection-handling.md
+- Hero 标题 → `references/copy-formulas/hero-headlines.md`
+- CTA 模式 → `references/copy-formulas/cta-patterns.md`
+- 异议处理 → `references/copy-formulas/objection-handling.md`
 
 ### 设计参考
-- 转化框架 → references/conversion-framework.md
-- 设计系统 → references/design-system.md
-- 美学风格 → references/aesthetic-styles.md
-- 反模式检测 → references/anti-patterns.md
+- 转化框架 → `references/conversion-framework.md`
+- 设计系统 → `references/design-system.md`
+- 美学风格 → `references/aesthetic-styles.md`
+- 反模式检测 → `references/anti-patterns.md`
+
+## 跨 Agent 环境适配说明
+
+本 Skill 设计为 **agent-agnostic**，兼容以下运行时：
+
+| 运行时 | 支持方式 | 备注 |
+|--------|---------|------|
+| Claude Code | 原生支持 | 推荐，`/agent` 或触发词激活 |
+| Codex CLI | 兼容 | 直接加载 SKILL.md |
+| Cursor | 兼容 | 复制到 `.cursorrules` 或使用 Composer |
+| Trae | 兼容 | 直接加载 SKILL.md |
+| OpenClaw | 兼容 | 遵循 skills.sh 协议 |
+| Hermes Agent | 兼容 | 直接加载 SKILL.md |
+| 其他 markdown-based skill 运行时 | 兼容 | 任何支持 YAML frontmatter + Markdown 的运行时 |
+
+### 路径规范
+
+所有文件引用均采用**相对本 Skill 根目录**的相对路径：
+- `references/xxx.md`
+- `assets/xxx.svg`
+- `scripts/xxx.py`
+
+Agent 或用户按自身安装位置解析，不依赖任何绝对路径。
+
+### 自包含原则
+
+SKILL.md 包含所有必要信息，可直接复制使用。references/ 中的文件为深度知识补充，按需加载即可。
+
+> 本 Skill 遵循 [Agent Skills](https://skills.sh) 开放协议。

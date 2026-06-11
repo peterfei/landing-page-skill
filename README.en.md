@@ -8,6 +8,7 @@
     <a href="README.md">简体中文</a> · <strong>English</strong>
   </p>
   <p>
+    <img src="https://img.shields.io/badge/Agent--Agnostic-50%2B%20Runtimes-22d3ee?color=0f172a&labelColor=1e293b" alt="Agent-Agnostic">
     <img src="https://img.shields.io/badge/Claude%20Code-Skill-blue?logo=claude&color=0f172a&labelColor=1e293b" alt="Claude Code Skill">
     <img src="https://img.shields.io/badge/Next.js-14%2F15-black?logo=next.js&color=0f172a&labelColor=1e293b" alt="Next.js">
     <img src="https://img.shields.io/badge/Tailwind-CSS-06b6d4?logo=tailwindcss&color=0f172a&labelColor=1e293b" alt="Tailwind CSS">
@@ -19,7 +20,7 @@
 
 ## Introduction
 
-Landing Page Skill is a Claude Code Agent Skill that delivers end-to-end landing page generation, combining **copy strategy + visual design + code implementation** in a single workflow.
+Landing Page Skill is an **agent-agnostic** Agent Skill that delivers end-to-end landing page generation, combining **copy strategy + visual design + code implementation** in a single workflow. Compatible with Claude Code, Codex CLI, Cursor, Gemini CLI, and 50+ other runtimes.
 
 Existing solutions (bear2u, rampstackco, anthropics/frontend-design) each cover only one aspect, with limitations like tech stack lock-in, single-language support, and no quality detection. This Skill fills the gap by integrating the **DESIGNNAS 11-element conversion framework**, **7-segment copy architecture**, **6 aesthetic style templates**, and **5 anti-pattern detection rules**.
 
@@ -35,6 +36,7 @@ Existing solutions (bear2u, rampstackco, anthropics/frontend-design) each cover 
 | **Tech Stack Adapter** | Next.js 14/15 + Tailwind CSS (App Router) |
 | **Industry Templates** | SaaS product page, E-commerce product page |
 | **Copy Formula Library** | Hero headline formulas, CTA pattern library, Objection handling strategies |
+| **Cross-Runtime** | Compatible with Claude Code, Codex CLI, Cursor, Trae, and 50+ runtimes |
 
 ## Project Structure
 
@@ -44,6 +46,7 @@ landing-page-skill/
 ├── LICENSE                           # MIT License
 ├── README.md                         # Chinese version
 ├── README.en.md                      # This file
+├── skills-lock.json                  # Skill registry lock file
 ├── assets/
 │   ├── logo.svg                      # Brand logo
 │   └── banner.svg                    # README banner
@@ -52,6 +55,7 @@ landing-page-skill/
 │   ├── design-system.md              # Typography/Color/Motion/Layout tokens
 │   ├── aesthetic-styles.md           # 6 aesthetic style templates
 │   ├── anti-patterns.md              # Anti-pattern detector: 5 rules
+│   ├── runtime-compatibility.md      # Cross-runtime compatibility docs
 │   ├── tech-adapters/
 │   │   └── nextjs-tailwind.md        # Next.js + Tailwind adapter
 │   ├── copy-formulas/
@@ -64,6 +68,13 @@ landing-page-skill/
 └── scripts/
     ├── quality_check.py              # Quality check script
     └── preview.sh                    # Local preview script
+```
+
+## Quick Start
+
+```bash
+# Install (requires Agent Skills runtime, e.g. Claude Code)
+npx skills add peterfei/landing-page-skill
 ```
 
 ## Usage
@@ -91,6 +102,21 @@ Validates:
 - SKILL.md ≤ 400 lines
 - Frontmatter format is valid
 - All 5 anti-pattern rules are present
+
+## Cross-Runtime Compatibility
+
+This Skill is designed as **agent-agnostic** and compatible with:
+
+| Runtime | Support |
+|---------|---------|
+| Claude Code | Native, recommended |
+| Codex CLI | Compatible, direct load |
+| Cursor | Compatible, `.cursorrules` or Composer |
+| Trae | Compatible, direct load |
+| OpenClaw | Compatible, skills.sh protocol |
+| Other markdown-based skill runtimes | Compatible |
+
+See `references/runtime-compatibility.md` for details.
 
 ## Applicability
 
