@@ -22,14 +22,14 @@
 
 Landing Page Skill 是一个 **agent-agnostic** 的 Agent Skill，实现**文案策略 + 视觉设计 + 代码实现**三位一体的全链路落地页生成能力。兼容 Claude Code、Codex CLI、Cursor、Gemini CLI 等 50+ 运行时。
 
-市场上已有的竞品（bear2u、rampstackco、anthropics/frontend-design）各自只覆盖单一环节，存在技术栈锁定、语言单一、无质量检测等明显缺陷。本 Skill 通过融合 **DESIGNNAS 11 元素转化框架**、**7 段式文案架构**、**6 种美学风格模板** 和 **5 项反模式主动检测**，填补了这一空白。
+市场上已有的竞品（bear2u、rampstackco、anthropics/frontend-design）各自只覆盖单一环节，存在技术栈锁定、语言单一、无质量检测等明显缺陷。本 Skill 通过融合 **11 元素转化框架**、**7 段式文案架构**、**6 种美学风格模板** 和 **5 项反模式主动检测**，填补了这一空白。
 
 ## 核心能力
 
 | 模块 | 说明 |
 |------|------|
 | **5 阶段协议** | 需求采集 → 策略规划 → 设计系统 → 代码生成 → 质量验证 |
-| **DESIGNNAS 11 元素** | Hero、社会证明、Features、Benefits、How It Works、Testimonials、Pricing、FAQ、CTA、稀缺性、Footer |
+| **11 元素转化框架** | Hero、社会证明、Features、Benefits、How It Works、Testimonials、Pricing、FAQ、CTA、稀缺性、Footer |
 | **7 段式文案框架** | Hero → 痛点 → 解决方案 → 利益 → 证据 → 异议处理 → CTA |
 | **6 种美学风格** | 极简 / 大胆 / 复古 / 有机 / 编辑 / 粗野 |
 | **反模式检测器** | 5 项 MVP 检测规则：泛滥字体、模板化配色、CTA 模糊、缺少社会证明、Hero 标题无力 |
@@ -123,6 +123,14 @@ python scripts/quality_check.py
 **适用：** 单页转化型落地页（SaaS、电商单品、咨询服务、课程）
 
 **不适用：** 多页网站、后端集成、复杂交互应用、非 Web 平台
+
+## 效果预览
+
+> 以下落地页由本 Skill 在 1 个对话回合内生成（零基础转行编程训练营 — Bold 风格）
+
+<div align="center">
+  <img src="demo-screenshot.jpg" alt="Landing Page Demo" width="100%">
+</div>
 
 ## 许可证
 
