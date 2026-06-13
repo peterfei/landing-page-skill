@@ -7,3 +7,4 @@ demo/dist/
 demo-*/node_modules/
 demo-*/.next/
 demo-*/dist/
+demo-*/package-lock.json
