@@ -133,6 +133,19 @@ python scripts/quality_check.py
   <img src="demo-screenshot.jpg" alt="Landing Page Demo" width="100%">
 </div>
 
+### 美学风格展示
+
+本 Skill 内置 **6 种美学风格模板**，覆盖从极简到粗野的完整设计光谱：
+
+| 风格 | 特点 | 示例产品 | 效果预览 |
+|------|------|----------|----------|
+| **Minimalist** | 留白、克制的配色、无装饰 | FlowSync - 工作流自动化平台 | <img src="assets/examples/flowsync-minimalist-hero.png" alt="Minimalist 风格" width="100%"> |
+| **Bold** | 高对比度、粗体字、强烈视觉冲击 | PULSE - 沉浸式电音节 | <img src="assets/examples/pulse-bold-hero.png" alt="Bold 风格" width="100%"> |
+| **Vintage** | 温暖色调、装饰性边框、经典字体 | 匠人手作 - 手工皮具工作室 | <img src="assets/examples/craftsman-vintage-hero.png" alt="Vintage 风格" width="100%"> |
+| **Organic** | 自然配色、圆角、柔和渐变 | GreenLife - 有机食品订阅 | <img src="assets/examples/greenlife-organic-hero.png" alt="Organic 风格" width="100%"> |
+| **Editorial** | 杂志排版、衬线字体、高可读性 | InsightMedia - 深度商业观察 | <img src="assets/examples/insightmedia-editorial-hero.png" alt="Editorial 风格" width="100%"> |
+| **Brutalist** | 粗边框、高对比度、原始美学 | RAW - 极简力量训练 | <img src="assets/examples/raw-brutalist-hero.png" alt="Brutalist 风格" width="100%"> |
+
 
 ## 许可证
 
