@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: #FFFFFF;
+  --color-surface: #000000;
+  --color-accent: #FF0000;
+  --color-border: #000000;
+  --color-text: #000000;
+  --color-text-inverse: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: 'Courier New', Courier, monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Brutalist 粗边框样式 */
+.brutalist-border {
+  border: 4px solid var(--color-border);
+}
+
+/* 重置默认链接样式 */
+a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+a:hover {
+  background-color: var(--color-surface);
+  color: var(--color-text-inverse);
+}

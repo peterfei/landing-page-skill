@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #dc2626;
+  --color-background: #0a0a0a;
+  --color-surface: #171717;
+  --color-accent: #facc15;
+  --color-text: #ffffff;
+  --color-text-secondary: #a3a3a3;
+}
+
+* {
+  border-color: var(--color-surface);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', 'Impact', sans-serif;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 4.5rem;
+  line-height: 1;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 2.5rem;
+  line-height: 1.3;
+  font-weight: 800;
+}

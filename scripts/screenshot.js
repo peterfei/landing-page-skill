@@ -9,7 +9,7 @@ const { chromium } = require('playwright');
   const page = await context.newPage();
 
   // 访问页面
-  await page.goto('http://localhost:3003', {
+  await page.goto('http://localhost:3007', {
     waitUntil: 'networkidle'
   });
 
@@ -18,7 +18,7 @@ const { chromium } = require('playwright');
 
   // 截图保存 - 4K高清完整页面
   await page.screenshot({
-    path: 'assets/examples/insightmedia-editorial-full.png',
+    path: 'assets/examples/raw-brutalist-full.png',
     fullPage: true,
     scale: 'device' // 使用设备像素比
   });
@@ -26,12 +26,12 @@ const { chromium } = require('playwright');
   // Hero 区域4K高清截图
   const hero = await page.locator('section').first();
   await hero.screenshot({
-    path: 'assets/examples/insightmedia-editorial-hero.png'
+    path: 'assets/examples/raw-brutalist-hero.png'
   });
 
   await browser.close();
 
   console.log('✓ 4K高清截图已保存到 assets/examples/');
-  console.log('  - insightmedia-editorial-full.png (完整页面, ~5760x3240分辨率)');
-  console.log('  - insightmedia-editorial-hero.png (Hero区域, ~5760x3240分辨率)');
+  console.log('  - raw-brutalist-full.png (完整页面, ~5760x3240分辨率)');
+  console.log('  - raw-brutalist-hero.png (Hero区域, ~5760x3240分辨率)');
 })();
