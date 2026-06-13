@@ -84,26 +84,63 @@ description: >
 
 **输出**：完整可运行的 Next.js 项目代码。
 
-### Phase 5: 质量验证
-
-运行以下检查清单，输出检测报告：
+### Phase 5: 质量验证（闭环保障）
 
 #### 5.1 转化检查
 - [ ] 11 元素覆盖率：检查是否包含 Hero、Social Proof、Features、Benefits、How It Works、Testimonials、Pricing/CTA、FAQ、Scarcity、Footer（至少覆盖 7 个）
 - [ ] CTA 清晰度：CTA 文本是否使用 "动词 + 利益" 格式
 - [ ] Hero 标题：是否遵循 "结果 + 受众 + 机制" 公式
 
-#### 5.2 反模式检测（逐项检查）
+#### 5.2 反模式检测（逐项检查，详见 `references/anti-patterns.md`）
 
-| # | 规则 | 检测逻辑 | 严重度 | 修复建议 |
-|---|------|---------|--------|---------|
-| 1 | 泛滥字体 | 检测到 Inter/Roboto/Arial 作为 Display 字体 | 中 | 替换为风格匹配的 Display 字体（见 `references/aesthetic-styles.md`） |
-| 2 | 模板化配色 | 检测到紫色渐变(#7c3aed→#a855f7)+纯白背景 | 高 | 使用 `references/design-system.md` 配色 Token 重新生成 |
-| 3 | CTA 模糊 | CTA 文本为 Submit / Learn More / Click Here | 高 | 替换为 `references/copy-formulas/cta-patterns.md` 中的 "动词+利益" 格式 |
-| 4 | 缺少社会证明 | Hero 下方无 Social Proof 元素 | 中 | 在 Hero 后添加客户 Logo/评分/用户数量 |
-| 5 | Hero 标题无力 | 标题以 Welcome / 品牌名开头，或纯描述性语句 | 高 | 使用 `references/copy-formulas/hero-headlines.md` 公式重写 |
+| # | 规则 | 检测逻辑 | 严重度 |
+|---|------|---------|--------|
+| 1 | 泛滥字体 | Inter/Roboto/Arial 作为 Display 字体 | 阻塞 |
+| 2 | 模板化配色 | 紫色渐变 + 纯白背景的模板组合 | 阻塞 |
+| 3 | CTA 模糊 | CTA 为 Submit/Learn More/Click Here | 阻塞 |
+| 4 | 缺少社会证明 | Hero 下方无 Social Proof 元素 | 阻塞 |
+| 5 | Hero 标题无力 | Welcome/品牌名开头，纯描述性 | 阻塞 |
+| 6 | 移动端适配缺失 | 无 sm:/md:/lg: 响应式断点 | 警告 |
+| 7 | 可访问性基线 | 缺少 alt/aria/语义 HTML | 警告 |
+| 8 | SEO 基础缺失 | 无 meta/title/OG 标签 | 警告 |
+| 9 | 性能隐患 | 大图未优化、缺 lazy load | 警告 |
+| 10 | Token 一致性 | 硬编码颜色/非标准间距 | 警告 |
 
-**输出**：检测报告（Markdown 表格），高严重度问题必须修复后重新输出代码。
+#### 5.3 自动修复循环（阻塞级规则）
+
+阻塞级规则（1-5）未通过时，自动执行修复循环：
+1. 针对每个未通过的阻塞规则，生成具体修复代码
+2. **仅替换**触发规则的 Section 代码（不修改无关 Section）
+3. 重新运行该规则的检测
+4. 重复上述步骤，**最多 3 轮**
+5. 3 轮后仍未通过 → 报告失败原因，交由用户决定
+
+#### 5.4 正面模式验证（建议性，详见 `references/positive-patterns.md`）
+
+| # | 模式 | 检测逻辑 |
+|---|------|---------|
+| P1 | CTA 动词+利益 | CTA 文本匹配"动词 + 具体利益"格式 |
+| P2 | Hero 结果+受众 | 标题包含可量化结果 + 目标受众 |
+| P3 | 社会证明元素 | 页面包含 ≥1 个社会证明类型 |
+| P4 | 紧迫感/稀缺性 | 存在名额/时间/价格紧迫感元素 |
+
+正面模式**不触发自动修复**，仅在报告中提供优化建议。
+
+**输出**：检测报告（反模式 + 正面模式 Markdown 表格）+ 自动修复摘要（如有修复）。
+
+### Phase 5.5: 迭代优化（可选）
+
+Phase 5 完成后，向用户提供 3 个选项：
+
+**A) 接受** — 输出最终完整项目代码
+**B) 修改指定 Section** — 用户说明要修改的 Section 和修改要求
+**C) 重新生成指定 Section** — 用户指定 Section 从头重新生成
+
+迭代规则：
+- 修改/重新生成仅影响用户指定的 Section（Section 粒度）
+- 每次修改后，重新检测该 Section 相关的反模式规则
+- **最多 3 轮**迭代，超限后输出当前版本
+- 每轮输出变更日志："Round N: Modified [Sections], Re-checked [Rules]"
 
 ## 索引
 
@@ -124,6 +161,7 @@ description: >
 - 设计系统 → `references/design-system.md`
 - 美学风格 → `references/aesthetic-styles.md`
 - 反模式检测 → `references/anti-patterns.md`
+- 正面模式检测 → `references/positive-patterns.md`
 
 ## 跨 Agent 环境适配说明
 
